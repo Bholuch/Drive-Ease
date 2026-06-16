@@ -6,15 +6,18 @@ import Newsletter from '../components/Newsletter'
 import Footer from '../components/Footer'
 
 const Home = () => {
+  
   return (
-    <>
+    
+   <>
       <Hero/>
       <FeaturedSection/>
       <Banner/>
       <Newsletter/>
-      <Footer/>
-    </>
-  )
+      <Footer/> 
+      </>
+    
+ )
 }
 
 export default Home
