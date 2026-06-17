@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { dummyCarData } from '../../assets/assets'
 import Title from '../../components/owner/Title'
+import eye_close_icon from '../../assets/eye_close_icon.svg'
+import eye_icon from '../../assets/eye_icon.svg'
+import delete_icon from '../../assets/delete_icon.svg'
 
 const ManageCars = () => {
-
+  
+  const currency = import.meta.env.VITE_CURRENCY
   const [cars, setCars] = useState([])
   const fetchOwnerCars = async()=>{
     setCars(dummyCarData)
@@ -37,6 +41,20 @@ const ManageCars = () => {
                         <p className='font-medium'>{car.brand}{car.model}</p>
                         <p className='text-xs text-gray-500'>{car.seating_capacity} . {car.transmission}</p>
                       </div>
+                    </td>
+
+                    <td className='p-3 max-md:hidden'>{car.category}</td>
+                    <td className='p-3'>{currency}{car.pricePerDay}/day</td>
+
+                    <td className='p-3 max-md:hidden'>
+                       <span className={`px-3 py-1 rounded-full text-xs ${car.isAvailable ? 'bg-green-100 text-green-500' : 'bg-red-100 text-red-500'}`}>
+                        {car.isAvailable ? "Available": "Unavailable"}
+                        </span>
+                    </td>
+
+                    <td className='flex items-center p-3'>
+                      <img src={car.isAvailable ? eye_close_icon : eye_icon} alt='' className='cursor-pointer'/>
+                      <img src={delete_icon} alt='' className='cursor-pointer'/>
                     </td>
                   </tr>
                 ))}
